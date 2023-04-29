@@ -15,7 +15,7 @@
     <head>
         <meta charset='UTF-8'>
         <title>Administracion libros</title>
-        <script src='../script.js'></script>
+        <script src='../complementos/script.js'></script>
     </head>
     <body>
     <table border = '2'>

@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Insertar libro</title>
-    <link rel="stylesheet" type="text/css" href="estilo.css">
-    <script src="script.js"></script>
+    <link rel="stylesheet" type="text/css" href="complementos/estilo.css">
+    <script src="complementos/script.js"></script>
 </head>
 
 <body>
