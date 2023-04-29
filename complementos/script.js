@@ -15,9 +15,7 @@ document.addEventListener('DOMContentLoaded', function() {
         lector.readAsDataURL(archivo);
       }
     });
+    
   });
 
-
-  function submitForm(formId) {
-    document.getElementById(formId).submit();
-  }
+  
