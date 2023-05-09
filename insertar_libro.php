@@ -1,5 +1,6 @@
 <?php
 
+
 $conn = mysqli_connect('localhost', 'root', '', 'db_gestor_bibliotecas');
 if (!$conn) {
     die("Error al conectar a la base de datos: " . mysqli_connect_error());
@@ -15,13 +16,12 @@ $autor = $_POST["autor"];
 $autor = ucwords(strtolower($autor)); // ucwords pasa entre cada espacio la primera letra a mayuscula y le paso de parametro el texto todo en minuscila con strtolower._. 
 
 $sql = "INSERT INTO autores (nombre_autor) SELECT '$autor'
-        WHERE NOT EXISTS (
-        SELECT * FROM autores WHERE nombre_autor = '$autor');";
+        WHERE NOT EXISTS (SELECT * FROM autores WHERE nombre_autor = '$autor');";
 
-$result = mysqli_query($conn, $sql) or die(mysqli_error($conn));
+$result = mysqli_query($conn, $sql) or die(header('Location: notificacion_resultado_libro.php?mensaje=error'));
 
 $sql = "SELECT id_autor FROM autores WHERE nombre_autor = '$autor'";
-$result = mysqli_query($conn, $sql) or die(mysqli_error($conn));
+$result = mysqli_query($conn, $sql) or die(header('Location: notificacion_resultado_libro.php?mensaje=error'));
 $fila = mysqli_fetch_assoc($result);
 $id_autor = $fila['id_autor'];
 
@@ -63,10 +63,8 @@ foreach ($generos as $id_genero) {
     $result = mysqli_query($conn, $sql) or die(mysqli_error($conn));
   }
   mysqli_close($conn);
-  echo "<script>alert('Se registro el libro de forma exitosa'); 
-        window.location='http://localhost/proyecto_aula_bibliotecav2/insertar_libro_principal.php';
-        </script>";
-  exit;
+    header('Location: notificacion_resultado_libro.php?mensaje=exito');
+    exit();
 
 //header('Location: ruta')
 ?>

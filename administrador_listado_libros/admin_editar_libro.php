@@ -16,7 +16,7 @@ echo "
     <meta charset='UTF-8'>
     <title>Editar datos de libro</title>
     <link rel='stylesheet' type='text/css' href='../complementos/estilo.css'>
-    <script src='../complementos/script.js'></script>
+    <script src='../script.js'></script>
 </head>
 
 <body>
@@ -69,7 +69,6 @@ echo "
         </button>
     </form>
     <img style = 'width: 100px;' id='vista-previa' src='../".$fila['img_portada']."' alt='Vista previa de imagen''>
-
 </body>
 </html>";
 ?>

@@ -15,7 +15,7 @@
     <head>
         <meta charset='UTF-8'>
         <title>Administracion libros</title>
-        
+        <script src='../script.js'></script>
     </head>
     <body>
     <table border = '2'>
@@ -48,18 +48,7 @@
             }
     echo "
     </table>
-    <script src='../complementos/script.js'></script>
-    <script>
-        function confirmarEliminacion(formId) {
-            if (confirm('¿Estás seguro de que desea eliminar este libro?')) {
-                document.getElementById(formId).submit();
-            }
-        }
-
-        function submitForm(formId) {
-            document.getElementById(formId).submit();
-        }
-    </script>
+    
 
     </body>";
 

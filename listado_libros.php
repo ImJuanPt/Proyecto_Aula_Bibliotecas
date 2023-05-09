@@ -17,7 +17,7 @@
         <meta charset='UTF-8'>
         <title>Elementos al lado</title>
         <link rel='stylesheet' type='text/css' href='complementos/estilo.css'>
-        <script src='complementos/script.js'></script>
+        <script src='script.js'></script>
     </head>
         <body>
             <div class = 'consulta'>
@@ -40,6 +40,7 @@
                             <center> <h4 style='cursor: pointer' onclick='submitForm(\"form-libro-".$row['id_libro']."\")'>" .
                                 $row['nombre'] ."</h4>
                                 <img src='".$row['img_portada']."' title='".$row['descripcion']."' style='width: 160px; height: 210px; cursor: pointer' onclick='submitForm(\"form-libro-".$row['id_libro']."\")'><br>
+                                
                                 Autor: <br>".$row['nombre_autor']." <br>
                                 Stock: <br>". $row['stock']."
                             </center>

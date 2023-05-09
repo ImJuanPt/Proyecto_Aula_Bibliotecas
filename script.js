@@ -18,4 +18,12 @@ document.addEventListener('DOMContentLoaded', function() {
     
   });
 
-  
+  function submitForm(formId) {
+    document.getElementById(formId).submit();
+  }
+
+  function confirmarEliminacion(formId) {
+    if (confirm('¿Estás seguro de que desea eliminar este libro?')) {
+        document.getElementById(formId).submit();
+    }
+}
