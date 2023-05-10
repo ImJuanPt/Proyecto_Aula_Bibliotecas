@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <title>Insertar libro</title>
-    <link rel="stylesheet" type="text/css" href="complementos/estilo.css">
+    <link rel="stylesheet" type="text/css" href="../complementos/estilo.css">
     <script src="script.js"></script>
 </head>
 
 <body>
-    <form action="insertar_libro.php" method="post" enctype="multipart/form-data">
+    <form action="admin_insertar_libro.php" method="post" enctype="multipart/form-data">
         <label class="labe" for="nombre">Nombre</label>
         <input class="labe" type="text" name="nombre" required>
         <label class="labe" for="desc">Descripcion</label>

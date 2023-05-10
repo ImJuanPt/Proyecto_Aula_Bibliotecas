@@ -16,6 +16,7 @@
         <meta charset='UTF-8'>
         <title>Administracion libros</title>
         <script src='../script.js'></script>
+        <meta http-equiv='Cache-Control' content='no-cache, must-revalidate'>
     </head>
     <body>
     <table border = '2'>

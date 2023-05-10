@@ -20,7 +20,7 @@ echo "
 </head>
 
 <body>
-    <form action='insertar_libro.php' method='post' enctype='multipart/form-data'>
+    <form action='admin_insertar_libro.php' method='post' enctype='multipart/form-data'>
         <label class='labe' for='nombre'>Nombre</label>
         <input class='labe' type='text' name='nombre' value = '".$fila['nombre']."' required>
         <label class='labe' for='desc'>Descripcion</label>
@@ -36,8 +36,7 @@ echo "
         if (!$conn) {
             die('Error al conectar a la base de datos: ' . mysqli_connect_error());
         } else {
-            $sql = "SELECT g.nombre_genero
-                    FROM generos g
+            $sql = "SELECT g.nombre_genero FROM generos g
                     INNER JOIN libros_generos lg ON g.id_genero = lg.id_genero
                     WHERE lg.id_libro = $id_libro";
             $result = mysqli_query($conn, $sql) or die(mysqli_error($conn));
@@ -63,10 +62,8 @@ echo "
           echo "
       </div>
         <label class='labe' for='nombre'>Portada</label>
-        <input class='labe' type='file' name='imagen' id='imagen' accept='image/*' required>
-        <button class='labe' type='submit' class='btn btn-primary'>
-            Registrar libro
-        </button>
+        <input class='labe' type='file' name='imagen' id='imagen' value='".$fila['img_portada']."' accept='image/*' required>
+        <button class='labe' type='submit' class='btn btn-primary'>Aceptar cambios</button>
     </form>
     <img style = 'width: 100px;' id='vista-previa' src='../".$fila['img_portada']."' alt='Vista previa de imagen''>
 </body>
