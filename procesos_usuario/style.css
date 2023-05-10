@@ -90,9 +90,9 @@
 }
 
 .register_camp button{
-    width: 120px;
+    width: 200px;
     font-size: 24px;
-    margin: 0;
+    margin: 5px;
     border-radius: 40px;
     background-color: inherit;
     
