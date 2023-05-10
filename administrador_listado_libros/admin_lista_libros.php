@@ -7,7 +7,8 @@
     }
     mysqli_set_charset($conn,"utf8mb4");
     $sql = "SELECT *, autores.nombre_autor FROM libros 
-            INNER JOIN autores ON libros.id_autor = autores.id_autor;";
+            INNER JOIN autores ON libros.id_autor = autores.id_autor
+            WHERE estado_libro = 'ACTIVO';";
     $result = mysqli_query($conn, $sql) or die(mysqli_error($conn));
     
     echo "

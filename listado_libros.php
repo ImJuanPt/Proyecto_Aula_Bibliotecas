@@ -7,7 +7,8 @@
     }
 
     $sql = "SELECT *, autores.nombre_autor FROM libros 
-            INNER JOIN autores ON libros.id_autor = autores.id_autor;";
+            INNER JOIN autores ON libros.id_autor = autores.id_autor
+            WHERE estado_libro = 'ACTIVO';";
     $result = mysqli_query($conn,$sql) or die(mysqli_error($conn));
 
     echo "
@@ -40,7 +41,6 @@
                             <center> <h4 style='cursor: pointer' onclick='submitForm(\"form-libro-".$row['id_libro']."\")'>" .
                                 $row['nombre'] ."</h4>
                                 <img src='".$row['img_portada']."' title='".$row['descripcion']."' style='width: 160px; height: 210px; cursor: pointer' onclick='submitForm(\"form-libro-".$row['id_libro']."\")'><br>
-                                
                                 Autor: <br>".$row['nombre_autor']." <br>
                                 Stock: <br>". $row['stock']."
                             </center>

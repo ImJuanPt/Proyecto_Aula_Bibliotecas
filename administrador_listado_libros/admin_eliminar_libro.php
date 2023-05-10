@@ -9,7 +9,7 @@
     if (file_exists($ruta_archivo)) {
         unlink($ruta_archivo);
         
-        $sql = "DELETE FROM LIBROS WHERE id_libro = $id_libro"; 
+        $sql = "UPDATE LIBROS SET estado_libro = 'INACTIVO' WHERE id_libro = $id_libro";
         $result = mysqli_query($conn,$sql);
         if (!$result) {
             echo "Error al eliminar el registro: " . mysqli_error($conn);
