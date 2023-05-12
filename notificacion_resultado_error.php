@@ -17,12 +17,11 @@ if (isset($_GET['mensaje'])) {
       echo '
       <html>
         <head>
-          <title>Error al registrar </title>
+          <title>Error en la pagina </title>
         </head>
         <body>
-          <h4>No se registro correctamente el libro, causado por: <b>'.$mensaje.' <b> <br> ¿Qué desea hacer a continuacion?</h4>
-          <a href="admin_insertar_libro_principal.php"><button>Registrar otro libro</button></a>
-          <a href="admin_lista_libros.php"><button>Lista de libros</button></a>
+          <h4>Hubo un problema inesperado causado por: <b>'.$mensaje.' <b> <br></h4>
+          <a href="procesos_usuario/inicio_sesion_usuario.html"><button>Regresar al login</button></a>
         </body>
       </html>';
     }

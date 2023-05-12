@@ -11,7 +11,25 @@ class proceso {
   }
 
   public function ejecutar_qury($conn,$sentencia){
-    $result = mysqli_query($conn, $sentencia) or die(header('Location: ../notificacion_resultado_libro.php?mensaje= Error al ejecutar proceso. '.mysqli_error($conn)));
+    $ruta_proceso_usuario_and_listado_libros = '../notificacion_resultado_error.php';
+    $ruta_default = 'notificacion_resultado_error.php';
+    $ruta_administrador_prestamos = '../../notificacion_resultado_error.php';
+    $ruta_administrador_entrega_libro = '../../../notificacion_resultado_error.php';
+    
+    if (file_exists($ruta_proceso_usuario_and_listado_libros)) {
+      $ruta = $ruta_proceso_usuario_and_listado_libros;
+    }else if(file_exists($ruta_administrador_prestamos)) {
+      $ruta = $ruta_administrador_prestamos;
+    }else if(file_exists($ruta_administrador_entrega_libro)) {
+      $ruta = $ruta_administrador_entrega_libro;
+    }else {
+      $ruta = $ruta_default;
+    }
+
+    
+
+    
+    $result = mysqli_query($conn, $sentencia) or die(header('Location: '.$ruta.'?mensaje= Error al ejecutar proceso. '.mysqli_error($conn)));
     return $result;
   }
 }

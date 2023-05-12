@@ -48,8 +48,9 @@
                             <input type='hidden' name='cc_usuario_sesion' value='".$cc_usuario_sesion."'>
                             <img src='../iconos/generar_prestamo.png' title='Generar prestamo' style='width: 20px; cursor: pointer' onclick='submitForm(\"form-libro-generar_prestamo-".$row['id_libro']."\")'>
                         </form>
-                        <form id='form-libro-prestamos_libro-".$row['id_libro']."' action='admin_editar_libro.php' method='POST' style='display: inline-block;'>
+                        <form id='form-libro-prestamos_libro-".$row['id_libro']."' action='admin_prestamos/admin_entrega_libro/admin_lista_prestamos.php' method='POST' style='display: inline-block;'>
                             <input type='hidden' name='id_libro' value='".$row['id_libro']."'>
+                            <input type='hidden' name='cc_usuario_sesion' value='".$cc_usuario_sesion."'>
                             <img src='../iconos/prestamos_libros.png' title='Prestamos del libro' style='width: 20px; cursor: pointer' onclick='submitForm(\"form-libro-prestamos_libro-".$row['id_libro']."\")'>
                         </form>
                     </td>
