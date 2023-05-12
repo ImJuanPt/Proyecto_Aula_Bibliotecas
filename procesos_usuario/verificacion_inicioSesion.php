@@ -28,7 +28,7 @@ if(mysqli_num_rows($result) > 0){
         echo "contraseña incorrecta";
     }
     echo '
-                <input type="hidden" name="cc_usuario" value="'.$row['cedula'].'">
+                <input type="hidden" name="cc_usuario_sesion" value="'.$row['cedula'].'">
             </form>
         </body>
 

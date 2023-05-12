@@ -20,13 +20,13 @@
         <label class="checkbx">Seleccione uno o varios geneross:</label>
         <div class="contenedor_checkbox">
         <?php
-          $conn = mysqli_connect('localhost', 'root', '', 'db_gestor_bibliotecas');
+           require_once('../conexion_querys/conexion.php');
+           $proc = new proceso();
+           $conn = $proc->conn();
+
           mysqli_set_charset($conn,"utf8mb4");
-          if (!$conn) {
-            die("Error al conectar a la base de datos: " . mysqli_connect_error());
-          } else {
             $sql = "SELECT * FROM generos";
-            $result = mysqli_query($conn, $sql);
+            $result = $proc->ejecutar_qury($conn, $sql);
             $i = 0;
             while ($row = mysqli_fetch_assoc($result)) {
               if ($i % 5 == 0) {
@@ -38,7 +38,6 @@
                 echo "</div>";
               }
             }
-          }
         ?>
       </div>
         <label class="labe" for="nombre">Portada</label>

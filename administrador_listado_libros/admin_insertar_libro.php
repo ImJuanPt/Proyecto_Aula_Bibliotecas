@@ -1,10 +1,8 @@
 <?php
+require_once('../conexion_querys/conexion.php');
+$proc = new proceso();
+$conn = $proc->conn();
 
-
-$conn = mysqli_connect('localhost', 'root', '', 'db_gestor_bibliotecas');
-if (!$conn) {
-    die("Error al conectar a la base de datos: " . mysqli_connect_error());
-}
 $nombre = trim(mysqli_real_escape_string($conn, $_POST['nombre']));
 $descripcion = trim(mysqli_real_escape_string($conn, $_POST['desc']));
 $autor = trim(mysqli_real_escape_string($conn, $_POST['autor']));
@@ -18,10 +16,10 @@ $autor = ucwords(strtolower($autor)); // ucwords pasa entre cada espacio la prim
 $sql = "INSERT INTO autores (nombre_autor) SELECT '$autor'
         WHERE NOT EXISTS (SELECT * FROM autores WHERE nombre_autor = '$autor');";
 
-$result = mysqli_query($conn, $sql) or die(header('Location: notificacion_resultado_libro.php?mensaje= Error al agregar el autor'.mysqli_error($conn)));
+$result = $proc->ejecutar_qury($conn, $sql);
 
 $sql = "SELECT id_autor FROM autores WHERE nombre_autor = '$autor'";
-$result = mysqli_query($conn, $sql) or die(header('Location: notificacion_resultado_libro.php?mensaje= Error al obtener el id de autor'.mysqli_error($conn)));
+$result = $proc->ejecutar_qury($conn, $sql);
 $fila = mysqli_fetch_assoc($result);
 $id_autor = $fila['id_autor'];
 
@@ -39,7 +37,7 @@ if (isset($_FILES['imagen']) && $_FILES['imagen']['error'] === UPLOAD_ERR_OK) {
     if (in_array($extension, $extensiones_permit) && is_uploaded_file($tmp_name) && strpos($type, 'image/') === 0) {
         
         $sql = "SELECT * FROM libros";
-        $result = mysqli_query($conn, $sql) or die(header('Location: notificacion_resultado_libro.php?mensaje='.mysqli_error($conn)));
+        $result = $proc->ejecutar_qury($conn, $sql);
         $num_filas_total = mysqli_num_rows($result)+1;
         // Mover la imagen a la carpeta de destino
         $ruta_portada = 'portadas_libros/id_'.$num_filas_total.'_'.$nombre.'_'.$name;
@@ -48,19 +46,19 @@ if (isset($_FILES['imagen']) && $_FILES['imagen']['error'] === UPLOAD_ERR_OK) {
 
         // Insertar la ruta de la imagen en la base de datos
         $sql = "INSERT INTO libros (nombre, descripcion, fecha_publicacion, id_autor, stock, img_portada) VALUES ('$nombre','$descripcion','$fecha_publicacion','$id_autor','$stock','$ruta_portada')";
-        $result = mysqli_query($conn, $sql) or die(header('Location: notificacion_resultado_libro.php?mensaje='.mysqli_error($conn)));
+        $result = $proc->ejecutar_qury($conn, $sql);
     } else {
         die("Error al subir la imagen. Asegúrate de que seleccionaste un archivo válido. " . mysqli_error($conn));
     }
 } 
 
 $sql = "SELECT LAST_INSERT_ID() as ultimo_id;"; //se obtiene el ultimo id de libro insertado para agregar los generos **!cambiar!**
-$result = mysqli_query($conn, $sql) or die(header('Location: notificacion_resultado_libro.php?mensaje='.mysqli_error($conn)));
+$result = $proc->ejecutar_qury($conn, $sql);
 $ultimo_libro = mysqli_fetch_assoc($result);
 $id_libro = $ultimo_libro['ultimo_id'];
 foreach ($generos as $id_genero) {
     $sql = "INSERT INTO libros_generos (id_libro, id_genero) VALUES ($id_libro, $id_genero)";
-    $result = mysqli_query($conn, $sql) or die(header('Location: notificacion_resultado_libro.php?mensaje='.mysqli_error($conn)));
+    $result = $proc->ejecutar_qury($conn, $sql);
   }
   mysqli_close($conn);
     header('Location: notificacion_resultado_libro.php?mensaje=exito');

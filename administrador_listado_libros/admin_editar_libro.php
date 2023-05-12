@@ -1,13 +1,14 @@
 <?php
-$conn = mysqli_connect('localhost', 'root', '', 'db_gestor_bibliotecas');
-if (!$conn) {
-    die('Error al conectar a la base de datos: ' . mysqli_connect_error());
-}
+require_once('../conexion_querys/conexion.php');
+$proc = new proceso();
+$conn = $proc->conn();
+mysqli_set_charset($conn,'utf8mb4');
+
 $id_libro = $_POST['id_libro'];
 $sql = "SELECT * FROM libros
         INNER JOIN autores ON libros.id_autor = autores.id_autor
         WHERE id_libro = $id_libro";
-$result = mysqli_query($conn, $sql) or die(mysqli_error($conn));
+$result = $proc->ejecutar_qury($conn, $sql);
 $fila = mysqli_fetch_array($result);
 echo "
 <html>
@@ -31,21 +32,19 @@ echo "
         <input class='labe' type='number' name='stock' value = '".$fila['stock']."' required><br>
         <label class='checkbx'>Seleccione uno o varios geneross:</label>
         <div class='contenedor_checkbox'>";
-        $conn = mysqli_connect('localhost', 'root', '', 'db_gestor_bibliotecas');
-        mysqli_set_charset($conn,'utf8mb4');
         if (!$conn) {
             die('Error al conectar a la base de datos: ' . mysqli_connect_error());
         } else {
             $sql = "SELECT g.nombre_genero FROM generos g
                     INNER JOIN libros_generos lg ON g.id_genero = lg.id_genero
                     WHERE lg.id_libro = $id_libro";
-            $result = mysqli_query($conn, $sql) or die(mysqli_error($conn));
+            $result = $proc->ejecutar_qury($conn, $sql);
             $generos_libro = array(); // array para almacenar los nombres de los géneros que tiene el libro
             while ($row = mysqli_fetch_assoc($result)) {
                 $generos_libro[] = $row['nombre_genero'];
             }
             $sql_generos = 'SELECT * FROM generos';
-            $result_generos = mysqli_query($conn, $sql_generos) or die(mysqli_error($conn));
+            $result = $proc->ejecutar_qury($conn, $sql);
             $i = 0;
             while ($row_generos = mysqli_fetch_assoc($result_generos)) {
                 if ($i % 5 == 0) {
