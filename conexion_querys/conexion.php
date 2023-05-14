@@ -11,10 +11,11 @@ class proceso {
   }
 
   public function ejecutar_qury($conn,$sentencia){
-    $ruta_proceso_usuario_and_listado_libros = '../notificacion_resultado_error.php';
     $ruta_default = 'notificacion_resultado_error.php';
     $ruta_administrador_prestamos = '../../notificacion_resultado_error.php';
     $ruta_administrador_entrega_libro = '../../../notificacion_resultado_error.php';
+    $ruta_proceso_usuario_and_listado_libros = '../notificacion_resultado_error.php';
+
     
     if (file_exists($ruta_proceso_usuario_and_listado_libros)) {
       $ruta = $ruta_proceso_usuario_and_listado_libros;
@@ -26,11 +27,16 @@ class proceso {
       $ruta = $ruta_default;
     }
 
-    
-
-    
     $result = mysqli_query($conn, $sentencia) or die(header('Location: '.$ruta.'?mensaje= Error al ejecutar proceso. '.mysqli_error($conn)));
     return $result;
   }
+
+  public function sql_cerrarSesion($cedula){
+    $sql = "UPDATE usuarios SET SESION_ACTIVA = 0 WHERE cedula = $cedula";
+    return $sql;
+  }
+
+
+  
 }
 ?>

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>Insertar libro</title>
     <link rel="stylesheet" type="text/css" href="../complementos/estilo.css">
-    <script src="script.js"></script>
+    <script src="../script.js"></script>
 </head>
 
 <body>

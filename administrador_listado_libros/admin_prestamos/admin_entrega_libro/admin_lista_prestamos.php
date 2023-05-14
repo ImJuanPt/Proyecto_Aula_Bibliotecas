@@ -18,7 +18,7 @@
     <head>
         <meta charset='UTF-8'>
         <title>Administracion libros</title>
-        <script src='../script.js'></script>
+        <script src='../../../script.js'></script>
         <meta http-equiv='Cache-Control' content='no-cache, must-revalidate'>
     </head>
     <body>
@@ -31,6 +31,7 @@
             <th>Fecha prestamo</th>
             <th>Fecha max entrega</th>
             <th>Estado de prestamo</th>
+            <th>Entregar libro</th>
             </tr>";
             while ($row = mysqli_fetch_array($result, MYSQLI_BOTH)) {
                 echo "<tr>
@@ -41,12 +42,16 @@
                         <td>".$row['fecha_prestamo']."</td>
                         <td>".$row['fecha_max_devolucion']."</td>
                         <td>".$row['estado_prestamo']."</td>
+                        <form id='form-libro-entrega".$row['id_libro']."' action='admin_entrega_prestamo.php' method='POST' style='display: inline-block; margin-right: 15px; margin-left: 15px;'>
+                        <td>
+                            <input type='hidden' name='id_libro' value='".$row['id_libro']."'>
+                            <center><img src='../../../iconos/dar_libro.png' title='Entrega de libro' style='width: 20px; cursor: pointer' onclick='submitForm(\"form-libro-entrega".$row['id_libro']."\")'><center>
+                        </td>    
+                        </form>
                     </tr>";
             }
     echo "
     </table>
-    
-
     </body>";
 
 ?>

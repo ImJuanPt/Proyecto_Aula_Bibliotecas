@@ -26,4 +26,9 @@ document.addEventListener('DOMContentLoaded', function() {
     if (confirm('¿Estás seguro de que desea eliminar este libro?')) {
         document.getElementById(formId).submit();
     }
+    
+}
+
+function agregar_ruta(fileId, ruta){
+  document.getElementById(fileId).value = ruta;
 }

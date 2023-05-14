@@ -10,8 +10,6 @@
     
     $ruta_archivo = "../".$fila['img_portada'];
     if (file_exists($ruta_archivo)) {
-        unlink($ruta_archivo);
-        
         $sql = "UPDATE LIBROS SET estado_libro = 'INACTIVO' WHERE id_libro = $id_libro";
         $result = $proc->ejecutar_qury($conn, $sql);
         if ($result) {

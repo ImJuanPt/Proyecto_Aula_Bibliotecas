@@ -1,8 +1,8 @@
 <?php
-$conn = mysqli_connect('localhost', 'root', '', 'db_gestor_bibliotecas');
-if (!$conn) {
-    die("Error al conectar a la base de datos: " . mysqli_connect_error());
-}
+require_once('../conexion_querys/conexion.php');
+$proc = new proceso();
+$conn = $proc->conn();
+
 echo '<!DOCTYPE html>
         <html lang="en">
         <head>
@@ -34,14 +34,14 @@ $correo = preg_replace('/\s+/', ' ', trim(mysqli_real_escape_string($conn, $_POS
 $pass = mysqli_real_escape_string($conn, $_POST['contra']);
 
 $sql = "SELECT * FROM usuarios WHERE cedula = '$cedula'";
-$result = mysqli_query($conn, $sql) or die(mysqli_error($conn));
+$result = $proc->ejecutar_qury($conn, $sql);
 if(mysqli_num_rows($result) === 0){
     $sql = "SELECT * FROM usuarios WHERE correo = '$correo'";
-    $result = mysqli_query($conn, $sql) or die(mysqli_error($conn));
+    $result = $proc->ejecutar_qury($conn, $sql);
     if(mysqli_num_rows($result) === 0){
         $sql = "INSERT INTO usuarios (cedula, nombre, apellido_1, apellido_2, correo, passw) 
                 VALUES ('$cedula','$nombre', '$apellido1', '$apellido2', '$correo', '$pass')";
-        $result = mysqli_query($conn, $sql) or die(mysqli_error($conn));
+        $result = $proc->ejecutar_qury($conn, $sql);
         if($result){
             echo '<p>Registro exitoso</p>
                     <a href="inicio_sesion_usuario.html"><button type="button">Volver al login</button></a>';
