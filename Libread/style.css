@@ -1,0 +1,105 @@
+@font-face {
+    font-family:'fuentesita' ;
+    src: url(Assets/Fonts/Macaroni.ttf);
+};
+@font-face {
+    font-family:'fuentesita2' ;
+    src: url(Assets/Fonts/RobotoSlab-VariableFont_wght.ttf);
+};
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins';
+}
+
+.container {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 100vh;
+    background: white;
+    background-image: url(Assets/Images/Logo/fondo-abstracto-patrones-fisuras-uso-estilo-futurista-portada-negocios-banner_7505-1820.avif);
+    flex-direction: column;
+}
+
+.container-login {
+    display: flex;
+    justify-content: center;
+    width: 1000px;
+    height: 600px;
+}
+
+.container-logo,
+.container-form {
+
+    width: 500px;
+    height: 600px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.50);
+}
+
+.container-logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: brown;
+    border-radius: 20px 0 0 20px;
+    flex-direction: column;
+}
+
+.container-logo img {
+    width: 200px;
+    height: 200px;
+    margin-top: -60px;
+}
+
+.container-form {
+    background: #fff;
+    border-radius: 0 20px 20px 0;
+}
+
+.container-logo .titulo{
+        color: white;
+        font-size: 90px;
+        font-family: 'fuentesita';
+        margin-top: -190px;
+}
+
+.register_camp{
+    font-size: 23px;
+    font-family:'fuentesita' ;
+    display: flex;
+    height: 600px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.register_camp p{
+    font-size: 40px;
+    font-family:'fuentesita';
+    margin-top: -15px;
+}
+
+.register_camp input{
+    width: 300px;
+    font-size: 18px;
+    margin: 0;
+    border-radius: 40px;
+    padding: 5px 20px;
+}
+
+.register_camp button{
+    width: 120px;
+    font-size: 24px;
+    margin: 0;
+    border-radius: 40px;
+    background-color: inherit;
+    
+
+}
+.register_camp button:hover{
+    background-color: brown;
+    color: #fff;
+    border: none;
+}

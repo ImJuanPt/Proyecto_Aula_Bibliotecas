@@ -43,7 +43,8 @@ if (isset($_FILES['imagen']) && $_FILES['imagen']['error'] === UPLOAD_ERR_OK) {
         $ruta_portada = '../portadas_libros/id_'.$num_filas_total.'_'.$nombre.'_'.$name;
         $ruta_portada = str_replace(' ','',$ruta_portada); //quitar los espacios en blanco
         move_uploaded_file($tmp_name, $ruta_portada);
-
+        $ruta_portada = 'portadas_libros/id_'.$num_filas_total.'_'.$nombre.'_'.$name;
+        $ruta_portada = str_replace(' ','',$ruta_portada); //quitar los espacios en blanco
         // Insertar la ruta de la imagen en la base de datos
         $sql = "INSERT INTO libros (nombre, descripcion, fecha_publicacion, id_autor, stock, img_portada) VALUES ('$nombre','$descripcion','$fecha_publicacion','$id_autor','$stock','$ruta_portada')";
         $result = $proc->ejecutar_qury($conn, $sql);

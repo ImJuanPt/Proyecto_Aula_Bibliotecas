@@ -3,8 +3,6 @@ require_once('../../conexion_querys/conexion.php');
 $proc = new proceso();
 $conn = $proc->conn();
 
-$cc_usuario_sesion = mysqli_real_escape_string($conn, $_POST['cc_usuario_sesion']);
-
 $id_libro = mysqli_real_escape_string($conn, $_POST['id_libro']);
 $cc_usuario = mysqli_real_escape_string($conn, $_POST['cedula_solicitante']);
 $sql = "SELECT * FROM usuarios WHERE cedula = $cc_usuario";
@@ -34,7 +32,6 @@ echo "<html>
         <form action='insertar_prestamo.php' method='post'>
             <input type='hidden' name='id_libro' value='".$id_libro."'>
             <input type='hidden' name='cc_usuario' value='".$cc_usuario."'>
-            <input type='hidden' name='cc_usuario_sesion' value='".$cc_usuario_sesion."'>
             <button type='submit'>Confirmar prestamo</button>
         </form>
     </body>

@@ -59,11 +59,14 @@ echo "
             }
           echo "
       </div>
-        <label class='labe' for='nombre'>Portada</label>
-        <input class='labe' type='file' name='imagen' id='imagen' accept='image/*'>
-        <button class='labe' type='submit' class='btn btn-primary'>Aceptar cambios</button>
-    </form>
-    <img style='width: 100px;' id='vista-previa' src='$ruta_archivo' alt='Vista previa de imagen''>
+      <label class='labe' for='nombre'>Portada</label>
+      <input class='labe' type='file' name='imagen' id='imagen' accept='image/*'>
+      <button class='labe' type='submit' class='btn btn-primary'>
+          Confirmar cambio
+      </button>
+      
+  </form>
+  <img style = 'width: 150px;' id='vista-previa' src='../".$fila['img_portada']."' alt='Vista previa de imagen''>
     
 </body>
 </html>";

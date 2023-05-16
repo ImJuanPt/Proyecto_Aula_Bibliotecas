@@ -1,0 +1,58 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.contenedor{
+    position: absolute;
+    left: 260px;
+    top: 0;
+}
+
+.libro_content{
+    width: 900px;
+    height: 300px;
+    align-items: left;
+    padding: 10px;
+    border-bottom: 2px solid gray ;
+    
+}
+
+.libro_content .portada{
+    width: 180px;
+    border-radius: 5px;
+}
+
+.libro_content .prestar {
+    position: relative;
+    width: 30px;
+    height: 30px;
+    background-color: transparent;
+    border: none;
+    top: -110px;
+    left: 850px;
+}
+
+
+.libro_content .prestar img{
+    width: 30px;
+    height: 30px;
+
+}
+
+.libro_content .titulo{
+    position: relative;
+    left: 230px;
+    top: -270px;
+    font-size: 30px ;
+}
+
+.libro_content .descripcion{
+    position: relative;
+    top: -240px;
+    left: 260px;
+}
+
+
+
+   

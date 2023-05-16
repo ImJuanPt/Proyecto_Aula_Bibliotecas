@@ -18,7 +18,7 @@ $row = mysqli_fetch_array($result,MYSQLI_BOTH);
         if($row['passw'] == $pass){
             if($row['tipo_usuario'] === "DEFAULT"){
                 echo"
-                <form id='form-usuario' action='../listado_libros.php' method='POST'>";
+                <form id='form-usuario' action='../index.php' method='POST'>";
             }else{
                 echo"
                 <form id='form-usuario' action='../administrador_listado_libros/admin_lista_libros' method='POST'>";

@@ -1,10 +1,12 @@
 <?php
-    $conn = mysqli_connect("localhost", "root", "", "db_gestor_bibliotecas");
-    if (!$conn) {
-        echo "Error No: " . mysqli_connect_errno();
-        echo "Error Description: " . mysqli_connect_error();
-        exit;
-    }
+ require_once('conexion_querys/conexion.php');
+ $proc = new proceso();
+ $conn = $proc->conn();
+ mysqli_set_charset($conn,"utf8mb4");
+ $cc_usuario_sesion = mysqli_real_escape_string($conn, $_POST['cc_usuario_sesion']);
+ $sql = "SELECT * FROM usuarios WHERE cedula = $cc_usuario_sesion";
+ $result = $proc->ejecutar_qury($conn, $sql);
+ $row = mysqli_fetch_array($result, MYSQLI_BOTH);
 
     $sql = "SELECT *, autores.nombre_autor FROM libros 
             INNER JOIN autores ON libros.id_autor = autores.id_autor
@@ -15,13 +17,72 @@
     <!DOCTYPE html>
     <html>
     <head>
+        <title>Libros</title>
         <meta charset='UTF-8'>
-        <title>Elementos al lado</title>
-        <link rel='stylesheet' type='text/css' href='complementos/estilo.css'>
+        <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+        <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+        <link rel='stylesheet' href='libros.css'>
+        <link rel='stylesheet' href='vistas.css'>
+        <link rel='stylesheet' href='login.css'>
+        <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-regular-rounded/css/uicons-regular-rounded.css'>
+        <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-regular-rounded/css/uicons-regular-rounded.css'>
         <script src='script.js'></script>
     </head>
         <body>
-            <div class = 'consulta'>
+        <div class='content'>
+            <div class='logo'>
+                <img src='assets/Images/Logo/image-removebg-preview.png'>
+            </div>
+            <div class='container-nav'>
+                <div class='nav'>
+                <form id = 'enviar_datos".$row['cedula']."' action='profile.php' method='post'>
+                    <input type='hidden' name='cc_usuario_sesion' value='".$row['cedula']."'>
+                    <a style='cursor: pointer' onclick='submitForm(\"enviar_datos".$row['cedula']."\")'>
+                        <img src='Assets/Images/Botones/perfil.png' style = 'margin: auto;margin-left: 55%;'>
+                        <p>Perfil</p> 
+                    </a>
+                </form>
+            </div>
+            <div class='nav'>
+                <form id = 'enviar_datos_libro".$row['cedula']."' action='listado_libros.php' method='post'>
+                    <input type='hidden' name='cc_usuario_sesion' value='".$row['cedula']."'>
+                    <a style='cursor: pointer' onclick='submitForm(\"enviar_datos_libro".$row['cedula']."\")'>
+                        <img src='Assets/Images/Botones/libro.png' style = 'margin: auto;margin-left: 55%;'>
+                        <p>Libros</p> 
+                    </a>
+                </form>
+            </div>
+            <div class='nav'>
+                <form id = 'enviar_datos_prestamo".$row['cedula']."' action='prestamo.php' method='post'>
+                    <input type='hidden' name='cc_usuario_sesion' value='".$row['cedula']."'>
+                    <a style='cursor: pointer' onclick='submitForm(\"enviar_datos_prestamo".$row['cedula']."\")'>
+                        <img src='Assets/Images/Botones/prestamo.png' style = 'margin: auto;margin-left: 55%;'>
+                        <p>Prestamos</p> 
+                    </a>
+                </form>
+            </div>
+            <div class='nav'>
+                <form id = 'enviar_datos_devolucion".$row['cedula']."' action='devoluciones.php' method='post'>
+                    <input type='hidden' name='cc_usuario_sesion' value='".$row['cedula']."'>
+                    <a style='cursor: pointer' onclick='submitForm(\"enviar_datos_devolucion".$row['cedula']."\")'>
+                        <img src='Assets/Images/Botones/devolucion.png' style = 'margin: auto;margin-left: 55%;'>
+                        <p>Devoluciones</p> 
+                    </a>
+                </form>
+            </div>
+            <div class='logout'><button><img src='Assets/Images/Botones/salir.png' ></button></div>
+        </div>
+    </div>
+    <div class='home'>
+        <form id = 'enviar_datos_usuario".$row['cedula']."' action='index.php' method='post'>
+            <input type='hidden' name='cc_usuario_sesion' value='".$row['cedula']."'>
+            <a style='cursor: pointer' onclick='submitForm(\"enviar_datos_usuario".$row['cedula']."\")'>
+                <img src='Assets/Images/Botones/separador.png' style = 'margin: auto;margin-left: 55%;'>
+            </a>
+        </form>
+    </div>
+    <div class='welcome'>
+        <div class = 'consulta'>
                 <form action='resultado_busqueda.php' method='post'>
                     <input type='text' name='texto_busqueda'>
                     <select name='opcion_busqueda'>
@@ -32,18 +93,18 @@
                     <button type='submit'>Buscar</button>
                 </form>
             </div>
+    </div>
 
             <div class='contenedor'>";
             while($row = mysqli_fetch_array($result,MYSQLI_BOTH)){
-             echo "<div class='elemento'>
+             echo "<div class='libro_content'>
                         <form id='form-libro-".$row['id_libro']."' action='descripcion_libro.php' method='POST'>
                             <input type='hidden' name='id_libro' value='".$row['id_libro']."'>
-                            <center> <h4 style='cursor: pointer' onclick='submitForm(\"form-libro-".$row['id_libro']."\")'>" .
-                                $row['nombre'] ."</h4>
-                                <img src='".$row['img_portada']."' title='".$row['descripcion']."' style='width: 160px; height: 210px; cursor: pointer' onclick='submitForm(\"form-libro-".$row['id_libro']."\")'><br>
-                                Autor: <br>".$row['nombre_autor']." <br>
-                                Stock: <br>". $row['stock']."
-                            </center>
+                                <p class='titulo' style='cursor: pointer' onclick='submitForm(\"form-libro-".$row['id_libro']."\")'>".$row['nombre']."</p>
+                                <img class='portada' src='".$row['img_portada']."' title='".$row['descripcion']."' style='width: 160px; height: 210px; cursor: pointer' onclick='submitForm(\"form-libro-".$row['id_libro']."\")'><br>
+                                <p class='descripcion'>Descripcion: ".$row['descripcion']."</p><br><br>
+                                <p class='descripcion'> Autor: ".$row['nombre_autor']."</p>
+                                <p class='descripcion'>Stock: ".$row['stock']."</p>
                         </form>
                     </div>";
             }

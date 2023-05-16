@@ -5,7 +5,6 @@ $conn = $proc->conn();
 
 $id_libro = mysqli_real_escape_string($conn, $_POST['id_libro']);
 $cc_usuario = mysqli_real_escape_string($conn, $_POST['cc_usuario']);
-$cc_usuario_sesion = mysqli_real_escape_string($conn, $_POST['cc_usuario_sesion']);
 
 $sql = "SELECT * FROM usuarios WHERE cedula = $cc_usuario";
 $result = $proc->ejecutar_qury($conn,$sql);
@@ -25,7 +24,6 @@ if($row['prestamos_activos'] < 5){ //maximo 5 prestamos puede tener el usuario, 
             <body>
                 <h5>El prestamo se registro con exito </h5>
                 <form action='../admin_lista_libros.php' method='post'>
-                    <input type='hidden' name='cc_usuario_sesion' value='".$cc_usuario_sesion."'>
                 <button type='submit'>Regresar</button>
                 </form>
                 

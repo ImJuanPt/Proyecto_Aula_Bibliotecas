@@ -1,0 +1,212 @@
+@font-face {
+    font-family: 'fuentesita';
+    src: url(Assets/Fonts/Macaroni.ttf);
+}
+
+@font-face {
+    font-family: 'fuentesita2';
+    src: url(Assets/Fonts/RobotoSlab-VariableFont_wght.ttf);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins';
+    text-decoration: none;
+}
+
+body{
+    margin:0;
+    background-image: url(Assets/Images/Logo/fondo-abstracto-patrones-fisuras-uso-estilo-futurista-portada-negocios-banner_7505-1820.avif);
+}
+
+
+header img {
+    height: 170px;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    font-size: 50px;
+    align-items: center;
+    background-color: brown;
+    width: 250px;
+    height: 100vh;
+    margin: 0;
+}
+
+.content .logo img {
+
+    width: 180px;
+}
+
+
+.container-nav {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+
+.nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 30px;
+}
+
+.nav a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: -210px;
+    text-decoration: none;
+}
+
+.nav i {
+    font-size: 25px;
+    margin: 15px;
+    color: white;
+    margin-left: 60px;
+
+}
+
+.nav p {
+    position: absolute;
+    margin-left: 230px;
+    font-size: 20px;
+    color: #fff;
+    display: inline-block;
+
+}
+
+.nav img {
+    width: 25px;
+    margin: 15px;
+    margin-left: 150%;
+}
+
+.content .logout button {
+    position: relative;
+    top: 60px;
+    left: 0px;
+    background-color: tomato;
+    border: none;
+    cursor: pointer;
+}
+
+
+.content .logout button img {
+    position: absolute;
+    width: 20px;
+    left: 220px;
+}
+
+.welcome {
+    position: absolute;
+    top: 0px;
+    right: 300px;
+    font-family: fuentesita;
+    font-size: 35px;
+    z-index: 2; 
+}
+
+.welcome .bienvenido {
+    position: absolute;
+    width: 200px;
+    font-size: 20px;
+    top: -40px;
+}
+
+.welcome .aventura {
+    font-size: 40px;
+    width: 600px;
+    position: absolute;
+    font-family: 50px;
+    right: -90px;
+    top: 20px;
+
+}
+
+.notices{
+    align-items: center;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    right: 740px;
+    top: 150px;
+    width: 250px;
+    height: 400px;
+    background-color: white;
+    border-radius: 40px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.50);
+}
+
+
+.notices img{
+    width: 150px;
+    height: 190px;
+    margin-left: 45px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.20);
+}
+.notices .titulo{
+    font-family: fuentesita;
+    font-size: 30px;
+    position: absolute;
+    top: 9px;
+    left: 55px;
+}
+.notices .descripcion{
+    font-size: 19px;
+    margin: 15px;
+}
+.notices2{
+    align-items: center;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    right: -290px;
+    top: 40px;
+    width: 250px;
+    height: 400px;
+    background-color: white;
+    border-radius: 40px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.50);
+}
+
+.notices3{
+    align-items: center;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    right: -290px;
+    top: -50px;
+    width: 250px;
+    height: 400px;
+    background-color: white;
+    border-radius: 40px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.50);
+}
+
+.home{
+    position: absolute;
+    top: 0px;
+    right: 10px;
+    z-index: 1;
+}
+
+.vista_general{
+    margin: 0;
+    width: 0px;
+    padding: 0;
+}
+
+.logout{
+    margin-top: 40%;
+}
+.home{
+    cursor: pointer;
+    margin-right: 30px;
+}

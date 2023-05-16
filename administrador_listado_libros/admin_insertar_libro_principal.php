@@ -46,7 +46,7 @@
             Registrar libro
         </button>
     </form>
-    <img class="" id="vista-previa" src="#" alt="Vista previa de imagen" style="display: none; width: 100px;">
+    <img class="" id="vista-previa" src="#" alt="Vista previa de imagen" style="display: none; width: 150px;">
 
 </body>
 

@@ -1,0 +1,90 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+::-webkit-scrollbar{
+    display:none
+}
+
+body {
+    margin: 0;
+}
+
+.content_profile {
+    width: 530px;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    margin-left: 400px;
+    top: 55px;
+    height: 550px;
+    border-radius: 50px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.50);
+    margin-bottom: 0px;
+    position: absolute;
+}
+
+.content_profile p {
+    position: relative;
+    padding-left: 10px;
+    margin: 4.4px;
+    font-size: 16px;
+    color: rgb(0, 0, 0);
+    text-align: left;
+    padding-bottom: 5px;
+    padding-top: 8px;
+}
+
+.content_profile img {
+    margin-top: 30px;
+    width: 100px;
+    margin-left: 40%;
+    margin-bottom: 40px;
+}
+
+.content_profile .backgroundimage {
+    background-color: brown;
+    border-radius: 50px 0px;
+}
+
+.content_profile button {
+    position: absolute;
+    width: 20px;
+    background-color: transparent;
+    border: none;
+    margin-left: 340px;
+    top: 370px;
+}
+
+.content_profile button .editar {
+    margin-top: 100px;
+    width: 30px;
+    margin-left: 100px;
+}
+
+.content_profile .user_info {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    top: 180px;
+    left: 300px;
+}
+
+.content_profile .user_info p {
+    margin: -4.8px;
+}
+
+.content_profile .ver_contra {
+    position: absolute;
+    width: 30px;
+    right: 200px;
+    margin-top: 54px;
+}
+
+#contraseña {
+    opacity: 0;
+}
+
+#ocultar_pass {
+    display: none;
+}
