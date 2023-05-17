@@ -17,8 +17,8 @@
     <!DOCTYPE html>
     <html>
     <head>
-        <title>Libros</title>
         <meta charset='UTF-8'>
+        <title>Libros</title>
         <meta http-equiv='X-UA-Compatible' content='IE=edge'>
         <meta name='viewport' content='width=device-width, initial-scale=1.0'>
         <link rel='stylesheet' href='libros.css'>
@@ -70,7 +70,7 @@
                     </a>
                 </form>
             </div>
-            <div class='logout'><button><img src='Assets/Images/Botones/salir.png' ></button></div>
+            <div class='logout'><a href = 'procesos_usuario/inicio_sesion_usuario.html'><button><img src='Assets/Images/Botones/salir.png' ></button><a></div>
         </div>
     </div>
     <div class='home'>
@@ -85,10 +85,10 @@
         <div class = 'consulta'>
                 <form action='resultado_busqueda.php' method='post'>
                     <input type='text' name='texto_busqueda'>
+                    <input type='hidden' name='cc_usuario_sesion' value='".$row['cedula']."'>
                     <select name='opcion_busqueda'>
                         <option value='nombre'>Nombre</option>
                         <option value='nombre_autor'>Autor</option>
-                        <option value='opcion3'>ISBN</option>
                     </select>
                     <button type='submit'>Buscar</button>
                 </form>
@@ -96,15 +96,17 @@
     </div>
 
             <div class='contenedor'>";
-            while($row = mysqli_fetch_array($result,MYSQLI_BOTH)){
+            while($row_libro = mysqli_fetch_array($result,MYSQLI_BOTH)){
              echo "<div class='libro_content'>
-                        <form id='form-libro-".$row['id_libro']."' action='descripcion_libro.php' method='POST'>
-                            <input type='hidden' name='id_libro' value='".$row['id_libro']."'>
-                                <p class='titulo' style='cursor: pointer' onclick='submitForm(\"form-libro-".$row['id_libro']."\")'>".$row['nombre']."</p>
-                                <img class='portada' src='".$row['img_portada']."' title='".$row['descripcion']."' style='width: 160px; height: 210px; cursor: pointer' onclick='submitForm(\"form-libro-".$row['id_libro']."\")'><br>
-                                <p class='descripcion'>Descripcion: ".$row['descripcion']."</p><br><br>
-                                <p class='descripcion'> Autor: ".$row['nombre_autor']."</p>
-                                <p class='descripcion'>Stock: ".$row['stock']."</p>
+                        <form id='form-libro-".$row_libro['id_libro']."' action='descripcion_libro_seleccionado.php' method='POST'>
+                            <input type='hidden' name='id_libro' value='".$row_libro['id_libro']."'>
+                            <input type='hidden' name='cc_usuario_sesion' value='".$row['cedula']."'>
+                                <p class='titulo' style='cursor: pointer' onclick='submitForm(\"form-libro-".$row_libro['id_libro']."\")'>".$row_libro['nombre']."</p>
+                                <img class='portada' src='".$row_libro['img_portada']."' title='".$row_libro['descripcion']."' style='width: 160px; height: 210px; cursor: pointer' onclick='submitForm(\"form-libro-".$row_libro['id_libro']."\")'><br>
+                                <p class='descripcion'>Descripcion: ".$row_libro['descripcion']."</p><br><br>
+                                <p class='descripcion'> Autor: ".$row_libro['nombre_autor']."</p>
+                                <p class='descripcion'>Stock: ".$row_libro['stock']."</p>
+                                <button class='prestar'> <img src='Assets/Images/Botones/agregar.png'd></button>
                         </form>
                     </div>";
             }

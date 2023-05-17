@@ -66,7 +66,7 @@ echo "
                 </a>
             </form>
             </div>
-            <div class='logout'><button><img src='Assets/Images/Botones/salir.png' ></button></div>
+            <div class='logout'><a href = 'procesos_usuario/inicio_sesion_usuario.html'><button><img src='Assets/Images/Botones/salir.png' ></button><a></div>
         </div>
     </div>
     <div class='home'>
@@ -87,9 +87,10 @@ echo "
         <p>Cedula:</p>
         <p>Correo:</p>
         <p>Contraseña:</p>
-
-        <button class=editar;> <img class='editar' src='Assets/Images/Botones/lapiz-de-usuario.png'>
-        </button>
+        <form action = 'profile_editar.php' method = 'post'>
+            <input type='hidden' name='cc_usuario_sesion' value='".$row['cedula']."'>
+            <button type = 'submit' class=editar;> <img class='editar' src='Assets/Images/Botones/lapiz-de-usuario.png'></button>
+        </form>  
 
         <button id=ver_pass; onclick='mostrar_contra();'> <img class='ver_contra' src='Assets/Images/Botones/ojo.png'>
         </button>

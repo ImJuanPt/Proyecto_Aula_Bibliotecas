@@ -22,7 +22,6 @@
 }
 
 .libro_content .portada{
-    width: 180px;
     border-radius: 5px;
 }
 
@@ -38,22 +37,25 @@
 
 
 .libro_content .prestar img{
+    margin-left: -353px;
+    margin-top: -97px;
     width: 30px;
     height: 30px;
-
+    cursor: pointer;
 }
 
 .libro_content .titulo{
     position: relative;
     left: 230px;
-    top: -270px;
+    top: 10px;
     font-size: 30px ;
 }
 
 .libro_content .descripcion{
     position: relative;
-    top: -440px;
+    top: -160px;
     left: 230px;
+    margin-right: 221px;
 }
 
 

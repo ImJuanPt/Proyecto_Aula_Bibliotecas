@@ -55,10 +55,31 @@ if (isset($_FILES['imagen']) && $_FILES['imagen']['error'] === UPLOAD_ERR_OK) {
 }
 
 foreach ($generos as $id_genero) {
-    $sql = "INSERT INTO libros_generos (id_libro, id_genero) VALUES ($id_libro, $id_genero)
-            ON DUPLICATE KEY UPDATE id_libro = $id_libro, id_genero = $id_genero";
+    $sql = "INSERT INTO libros_generos (id_libro, id_genero)
+            SELECT $id_libro, $id_genero
+            FROM dual
+            WHERE NOT EXISTS (
+            SELECT 1
+            FROM libros_generos WHERE id_libro = $id_libro AND id_genero = $id_genero)";
     $result = $proc->ejecutar_qury($conn, $sql);
   }
+  // Obtener los generos actuales del libro en una lista
+$sql = "SELECT id_genero FROM libros_generos WHERE id_libro = $id_libro";
+$result = $proc->ejecutar_qury($conn, $sql);
+
+$generos_actuales = array();
+while ($fila = mysqli_fetch_assoc($result)) {
+    $generos_actuales[] = $fila['id_genero'];
+}
+
+// Comparar la lista actual con la lista de la pagina de de edicion 
+$generos_a_eliminar = array_diff($generos_actuales, $generos);
+
+// Eliminar los generos encontrados
+if (!empty($generos_a_eliminar)) {
+    $sql = "DELETE FROM libros_generos WHERE id_libro = $id_libro AND id_genero IN (" . implode(",", $generos_a_eliminar) . ")";
+    $result = $proc->ejecutar_qury($conn, $sql);
+}
   mysqli_close($conn);
   header('Location: ../notificacion_resultado_error.php?mensaje=exito_edicion');
   exit();

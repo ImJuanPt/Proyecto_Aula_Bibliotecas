@@ -14,9 +14,20 @@
         $result = $proc->ejecutar_qury($conn, $sql);
         if ($result) {
             mysqli_close($conn);
-            echo "<script>alert('Se elimino el libro de forma exitosa'); 
-            window.location='http://localhost/proyecto_aula_bibliotecav2/administrador_listado_libros/admin_lista_libros.php';
-            </script>";
+            echo '<script>alert("El libro se elimino de forma exitosa");</script>';
+            echo '<!DOCTYPE html>
+            <html>
+            <head>
+            <title>Libro eliminado </title>
+            </head>
+            <body onload="volver()">
+            <script>
+            function volver() {
+                window.history.back();
+            }
+            </script>
+            </body>
+            </html>';
         }
     } else {
         echo "El archivo no existe en la ubicación especificada.";

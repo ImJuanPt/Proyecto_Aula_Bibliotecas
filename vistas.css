@@ -57,9 +57,9 @@ body {
 }
 
 .content_profile button .editar {
-    margin-top: 100px;
+    margin-top: 112px;
     width: 30px;
-    margin-left: 100px;
+    margin-left: 75px;
 }
 
 .content_profile .user_info {
@@ -72,6 +72,13 @@ body {
 
 .content_profile .user_info p {
     margin: -4.8px;
+}
+
+#user_info_edit {
+    margin: 5.2px;
+}
+#contraseña{
+    margin: 5.2px;
 }
 
 .content_profile .ver_contra {

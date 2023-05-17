@@ -4,19 +4,31 @@
  $conn = $proc->conn();
  mysqli_set_charset($conn,"utf8mb4");
  $cc_usuario_sesion = mysqli_real_escape_string($conn, $_POST['cc_usuario_sesion']);
- $busqueda = mysqli_real_escape_string($conn, $_POST['texto_busqueda']);
- $opcion = $_POST['opcion_busqueda'];
- 
+ $id_libro = $_POST['id_libro'];
+
  $sql = "SELECT * FROM usuarios WHERE cedula = $cc_usuario_sesion";
  $result = $proc->ejecutar_qury($conn, $sql);
  $row = mysqli_fetch_array($result, MYSQLI_BOTH);
- 
 
-    $sql = "SELECT libros.*, autores.nombre_autor FROM libros 
-            INNER JOIN autores ON libros.id_autor = autores.id_autor
-            WHERE $opcion LIKE '$busqueda%' AND estado_libro = 'ACTIVO';";
-            
-    $result = mysqli_query($conn,$sql) or die(mysqli_error($conn));
+ $sql = "SELECT libros.*, autores.nombre_autor FROM libros 
+        INNER JOIN autores ON libros.id_autor = autores.id_autor
+        WHERE estado_libro = 'ACTIVO' AND id_libro = $id_libro;";
+ $result = mysqli_query($conn,$sql) or die(mysqli_error($conn));
+ $row_libro = mysqli_fetch_array($result,MYSQLI_BOTH);
+
+ $sql = "SELECT generos.nombre_genero 
+ FROM libros_generos 
+ INNER JOIN generos ON libros_generos.id_genero = generos.id_genero 
+ WHERE libros_generos.id_libro = '$id_libro';";
+ $result = mysqli_query($conn,$sql) or die(mysqli_error($conn));
+ $generos = '';
+    while($row_genero = mysqli_fetch_array($result,MYSQLI_BOTH)){
+        if($generos===''){
+            $generos = $row_genero['nombre_genero'];
+        }else{
+            $generos = $generos.", ".$row_genero['nombre_genero'];
+        }
+    }
 
     echo "
     <!DOCTYPE html>
@@ -94,26 +106,21 @@
                     <select name='opcion_busqueda'>
                         <option value='nombre'>Nombre</option>
                         <option value='nombre_autor'>Autor</option>
-                        <option value='opcion3'>ISBN</option>
                     </select>
                     <button type='submit'>Buscar</button>
                 </form>
             </div>
     </div>
-            <div class='contenedor'>";
-            while($row_libro = mysqli_fetch_array($result,MYSQLI_BOTH)){
-                echo "<div class='libro_content'>
-                           <form id='form-libro-".$row_libro['id_libro']."' action='descripcion_libro_seleccionado.php' method='POST'>
-                               <input type='hidden' name='id_libro' value='".$row_libro['id_libro']."'>
-                               <input type='hidden' name='cc_usuario_sesion' value='".$row['cedula']."'>
-                                   <p class='titulo' style='cursor: pointer' onclick='submitForm(\"form-libro-".$row_libro['id_libro']."\")'>".$row_libro['nombre']."</p>
-                                   <img class='portada' src='".$row_libro['img_portada']."' title='".$row_libro['descripcion']."' style='width: 160px; height: 210px; cursor: pointer' onclick='submitForm(\"form-libro-".$row_libro['id_libro']."\")'><br>
-                                   <p class='descripcion'>Descripcion: ".$row_libro['descripcion']."</p><br><br>
-                                   <p class='descripcion'> Autor: ".$row_libro['nombre_autor']."</p>
-                                   <p class='descripcion'>Stock: ".$row_libro['stock']."</p>
-                           </form>
-                       </div>";
-               }
+        <div class='contenedor'>";
+         echo "<div class='libro_content'>
+                    <input type='hidden' name='id_libro' value='".$row_libro['id_libro']."'><p class='titulo'>".$row_libro['nombre']."</p>
+                            <img class='portada' src='".$row_libro['img_portada']."' title='".$row_libro['descripcion']."' style='width: 160px; height: 210px;'><br>
+                            <p class='descripcion'>Descripcion: ".$row_libro['descripcion']."</p><br><br>
+                            <p class='descripcion'> Autor: ".$row_libro['nombre_autor']."</p>
+                            <p class='descripcion'>Stock: ".$row_libro['stock']."</p>
+                            <p class='descripcion'>Fecha de publicacion: ".$row_libro['fecha_publicacion']."</p>
+                            <p class='descripcion'>Generos: ".$generos."</p>
+                </div>";
       echo "</div>
         </body>
     </html>";
