@@ -31,10 +31,52 @@ class proceso {
     return $result;
   }
 
-  public function sql_cerrarSesion($cedula){
-    $sql = "UPDATE usuarios SET SESION_ACTIVA = 0 WHERE cedula = $cedula";
-    return $sql;
+  public function volver_listado($cedula){
+    echo "
+    <html>
+    <head>
+        <script src='../script.js'></script>
+    </head>
+
+    <body onload='submitForm(\"form-libro-volver-$cedula\")'>
+      <form id='form-libro-volver-$cedula' action='admin_lista_libros.php' method='POST'>
+        <input type='hidden' name='cc_usuario_sesion' value='$cedula'>
+      </form>
+    </body>
+    </html>";
   }
+  public function volver_insertar($cedula){
+    echo "
+    <html>
+    <head>
+        <script src='../script.js'></script>
+    </head>
+
+    <body onload='submitForm(\"form-libro-volver-$cedula\")'>
+      <form id='form-libro-volver-$cedula' action='admin_lista_libros.php' method='POST'>
+        <input type='hidden' name='cc_usuario_sesion' value='$cedula'>
+      </form>
+    </body>
+    </html>";
+  }
+  public function volver_perfil($cedula, $inicio_ruta){
+    echo "
+    <html>
+    <head>
+        <script src='script.js'></script>
+    </head>
+
+    <body onload='submitForm(\"form-perfil-volver-$cedula\")'>
+      <form id='form-perfil-volver-$cedula' action='".$inicio_ruta."profile.php' method='POST'>
+        <input type='hidden' name='cc_usuario_sesion' value='$cedula'>
+      </form>
+    </body>
+    </html>";
+
+  }
+
+
+
 
 
   

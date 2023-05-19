@@ -61,6 +61,13 @@ body {
     width: 30px;
     margin-left: 75px;
 }
+.content_profile button .editar2 {
+    margin-top: -79px;
+    width: 30px;
+    margin-left: -388px;
+}
+
+
 
 .content_profile .user_info {
     position: absolute;

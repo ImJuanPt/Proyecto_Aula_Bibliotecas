@@ -95,7 +95,7 @@
             </div>
     </div>
 
-            <div class='contenedor'>";
+            <div class='contenedor2'>";
             while($row_libro = mysqli_fetch_array($result,MYSQLI_BOTH)){
              echo "<div class='libro_content'>
                         <form id='form-libro-".$row_libro['id_libro']."' action='descripcion_libro_seleccionado.php' method='POST'>

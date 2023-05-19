@@ -19,9 +19,8 @@
     <head>
     
         <meta charset='UTF-8'>
-        <meta http-equiv='Cache-Control' content='no-cache, must-revalidate'>
         <title>Libros</title>
-        <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+        <script src='https://code.jquery.com/jquery-3.6.0.min.js'></script>
         <meta name='viewport' content='width=device-width, initial-scale=1.0'>
         <link rel='stylesheet' href='../libros.css'>
         <link rel='stylesheet' href='../vistas.css'>
@@ -29,6 +28,7 @@
         <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-regular-rounded/css/uicons-regular-rounded.css'>
         <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-regular-rounded/css/uicons-regular-rounded.css'>
         <script src='../script.js'></script>
+        <meta http-equiv='Cache-Control' content='no-cache, must-revalidate'>
     </head>
         <body>
         <div class='content'>
@@ -55,33 +55,17 @@
                 </form>
             </div>
             <div class='nav'>
-                <form id = 'enviar_datos_prestamo".$row['cedula']."' action='prestamo.php' method='post'>
+                <form id = 'enviar_datos_insertar_libro".$row['cedula']."' action='admin_insertar_libro_principal.php' method='post'>
                     <input type='hidden' name='cc_usuario_sesion' value='".$row['cedula']."'>
-                    <a style='cursor: pointer' onclick='submitForm(\"enviar_datos_prestamo".$row['cedula']."\")'>
+                    <a style='cursor: pointer' onclick='submitForm(\"enviar_datos_insertar_libro".$row['cedula']."\")'>
                         <img src='../Assets/Images/Botones/prestamo.png' style = 'margin: auto;margin-left: 55%;'>
-                        <p>Prestamos</p> 
+                        <p>Registrar libros</p> 
                     </a>
                 </form>
             </div>
-            <div class='nav'>
-                <form id = 'enviar_datos_devolucion".$row['cedula']."' action='devoluciones.php' method='post'>
-                    <input type='hidden' name='cc_usuario_sesion' value='".$row['cedula']."'>
-                    <a style='cursor: pointer' onclick='submitForm(\"enviar_datos_devolucion".$row['cedula']."\")'>
-                        <img src='../Assets/Images/Botones/devolucion.png' style = 'margin: auto;margin-left: 55%;'>
-                        <p>Devoluciones</p> 
-                    </a>
-                </form>
-            </div>
-            <div class='logout'><a href = '../procesos_usuario/inicio_sesion_usuario.html'><button><img src='../Assets/Images/Botones/salir.png' ></button><a></div>
+            
+            <div class='logout'><a href = '../procesos_usuario/inicio_sesion_usuario.html'><button><img src='../Assets/Images/Botones/salir.png' ></button></a></div>
         </div>
-    </div>
-    <div class='home'>
-        <form id = 'enviar_datos_usuario".$row['cedula']."' action='index.php' method='post'>
-            <input type='hidden' name='cc_usuario_sesion' value='".$row['cedula']."'>
-            <a style='cursor: pointer' onclick='submitForm(\"enviar_datos_usuario".$row['cedula']."\")'>
-                <img src='../Assets/Images/Botones/separador.png' style = 'margin: auto;margin-left: 55%;'>
-            </a>
-        </form>
     </div>
     <div class='welcome'>
         <div class = 'consulta'>
@@ -97,9 +81,9 @@
             </div>
     </div>
 
-            <div class='contenedor'>";
+            <div class='contenedor2'>";
             while($row_libro = mysqli_fetch_array($result,MYSQLI_BOTH)){
-             echo "<div class='libro_content'>
+             echo "<div class='libro_content' id = 'datos'>
                         <form id='form-libro-".$row_libro['id_libro']."' action='../descripcion_libro_seleccionado.php' method='POST'>
                             <input type='hidden' name='id_libro' value='".$row_libro['id_libro']."'>
                             <input type='hidden' name='cc_usuario_sesion' value='".$row['cedula']."'>
@@ -112,18 +96,22 @@
                             </form>
                                 <form id='form-libro-eliminar".$row_libro['id_libro']."' action='admin_eliminar_libro.php' method='POST' style='display: inline-block; margin-right: 15px; margin-left: 15px;'>
                                     <input type='hidden' name='id_libro' value='".$row_libro['id_libro']."'>
+                                    <input type='hidden' name='cc_usuario_sesion' value='".$row['cedula']."'>
                                     <button class='prestar'> <img src='../iconos/eliminar.png' title='Eliminar' onclick='confirmarEliminacion(\"form-libro-eliminar".$row_libro['id_libro']."\")'></button>
                                 </form>
                                 <form id='form-libro-editar-".$row_libro['id_libro']."' action='admin_editar_libro.php' method='POST' style='display: inline-block; margin-right: 15px;'>
                                     <input type='hidden' name='id_libro' value='".$row_libro['id_libro']."'>
+                                    <input type='hidden' name='cc_usuario_sesion' value='".$row['cedula']."'>
                                     <button class='prestar'><img src='../iconos/editar.png' title='Editar' onclick='submitForm(\"form-libro-editar-".$row_libro['id_libro']."\")'></button>
                                 </form>
                                 <form id='form-libro-generar_prestamo-".$row_libro['id_libro']."' action='admin_prestamos/solicitar_prestamo.php' method='POST' style='display: inline-block; margin-right: 15px;'>
                                     <input type='hidden' name='id_libro' value='".$row_libro['id_libro']."'> 
+                                    <input type='hidden' name='cc_usuario_sesion' value='".$row['cedula']."'>
                                     <button class='prestar'><img src='../iconos/generar_prestamo.png' title='Generar prestamo' onclick='submitForm(\"form-libro-generar_prestamo-".$row_libro['id_libro']."\")'></button>
                                 </form>
                                 <form id='form-libro-prestamos_libro-".$row_libro['id_libro']."' action='admin_prestamos/admin_entrega_libro/admin_lista_prestamos.php' method='POST' style='display: inline-block;'>
                                     <input type='hidden' name='id_libro' value='".$row_libro['id_libro']."'>
+                                    <input type='hidden' name='cc_usuario_sesion' value='".$row['cedula']."'>
                                     <button class='prestar'><img src='../iconos/prestamos_libros.png' title='Generar entrega' onclick='submitForm(\"form-libro-prestamos_libro-".$row_libro['id_libro']."\")'></button>
                                 </form>
                         </form>

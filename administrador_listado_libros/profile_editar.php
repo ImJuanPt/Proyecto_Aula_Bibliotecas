@@ -9,7 +9,7 @@ $result = $proc->ejecutar_qury($conn, $sql);
 $row = mysqli_fetch_array($result, MYSQLI_BOTH);
 echo "
 <!DOCTYPE html>
-<html>
+<html lang='en'>
 
 <head>
     <title>Libros</title>
@@ -78,27 +78,24 @@ echo "
         <p>Cedula:</p>
         <p>Correo:</p>
         <p>Contraseña:</p>
-        <form action = 'profile_editar.php' method = 'post'>
-            <input type='hidden' name='cc_usuario_sesion' value='".$row['cedula']."'>
-            <button type = 'submit' class=editar;> <img class='editar' src='../Assets/Images/Botones/lapiz-de-usuario.png'></button>
-        </form>  
+        <button id='ver_pass'; onclick='mostrar_contra();'><img class='ver_contra'
+        src='../Assets/Images/Botones/ojo.png'></button>
 
-        <button id=ver_pass; onclick='mostrar_contra();'> <img class='ver_contra' src='../Assets/Images/Botones/ojo.png'>
+        <button id='ocultar_pass' onclick='quitar_contra();'> <img class='ver_contra' src='../Assets/Images/Botones/ojos-cruzados.png'>
         </button>
-
-        <button id='ocultar_pass' onclick='quitar_contra();'> <img class='ver_contra'
-                src='../Assets/Images/Botones/ojos-cruzados.png'></button>
-
-        <div class='user_info'>
-            <p class='puntos'>". $row['puntaje']."</p> <br>
-            <p class='nombre'>". $row['nombre']."</p><br>
-            <p class='apellido'>". $row['apellido_1']."</p><br>
-            <p class='apellido'>". $row['apellido_2']."</p><br>
-            <p class='cedula'>". $row["cedula"]."</p><br>
-            <p class='correo'>". $row["correo"]."</p><br>
-            <p id=contraseña>". $row["passw"]."</p><br>
-
-
+                
+        <div class='user_info' >
+            <form action='../profile_edit_insert.php' method='post'>
+                <input type='hidden' name='cc_usuario_sesion' value='".$row['cedula']."'>
+                <p class='puntos' id ='user_info_edit'>". $row['puntaje']."</p> 
+                <p class='nombre' id='user_info_edit'><input  name = 'nombre' type = 'text' value ='". $row['nombre']."'></p>
+                <p class='apellido' id='user_info_edit'><input  name = 'apellido1' type = 'text' value ='". $row['apellido_1']."'</p><br>
+                <p class='apellido' id='user_info_edit'><input  name = 'apellido2' type = 'text' value ='". $row['apellido_2']."'</p><br>
+                <p class='cedula' id='user_info_edit'><input  name = 'cedula' type = 'number' value ='". $row["cedula"]."'</p><br>
+                <p class='correo' id='user_info_edit'><input  name = 'email' type = 'email' value ='". $row["correo"]."'</p><br>
+                <p id='contraseña' ><input  name = 'contra' type = 'text' value ='". $row["passw"]."'></p><br>
+                <button type = 'submit' class=editar;> <img class='editar2' src='../Assets/Images/Botones/lapiz-de-usuario.png'></button>
+            </form>
         </div>
     </div>
 

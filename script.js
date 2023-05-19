@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     
   });
-
+  
   function submitForm(formId) {
     document.getElementById(formId).submit();
   }
@@ -37,3 +37,4 @@ $('#container1').scroll(function() {
   var scrollTop = $(this).scrollTop(); // Obtener la posición del scrollbar en el contenedor de desplazamiento
   $('#container2').scrollTop(scrollTop); // Ajustar la posición del contenedor con muchos elementos
 });
+

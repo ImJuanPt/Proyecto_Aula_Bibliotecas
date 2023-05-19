@@ -3,6 +3,7 @@ require_once('../conexion_querys/conexion.php');
 $proc = new proceso();
 $conn = $proc->conn();
 mysqli_set_charset($conn,"utf8mb4");
+$cc_usuario_sesion = mysqli_real_escape_string($conn, $_POST['cc_usuario_sesion']);
 $nombre = trim(mysqli_real_escape_string($conn, $_POST['nombre']));
 $descripcion = trim(mysqli_real_escape_string($conn, $_POST['desc']));
 $autor = trim(mysqli_real_escape_string($conn, $_POST['autor']));
@@ -64,7 +65,7 @@ foreach ($generos as $id_genero) {
   $sql = "INSERT INTO anuncios(id_libro, tipo_anuncio, descripcion) VALUES ($id_libro, 'Nuevo libro', 'Un nuevo libro ha sido agregado a nuestra biblioteca, puede que sea de su agrado')";
   $proc->ejecutar_qury($conn, $sql);
   mysqli_close($conn);
-  header('Location: .././notificacion_resultado_error.php?mensaje=exito');
-  exit();
+  echo '<script>alert("El libro se inserto de forma exitosa");</script>';
+  $proc->volver_insertar($cc_usuario_sesion);
 
 ?>

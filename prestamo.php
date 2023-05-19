@@ -29,6 +29,7 @@ echo "
     <link rel='stylesheet' href='vistas.css'>
     <link rel='stylesheet' href='login.css'>
     <link rel='stylesheet' href='prestamo.css'>
+    <link rel='stylesheet' href='administrador_listado_libros\admin_prestamos\admin_entrega_libro\ccs_tabla.css'>
     <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-regular-rounded/css/uicons-regular-rounded.css'>
     <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-regular-rounded/css/uicons-regular-rounded.css'>
     <script src='script.js'></script>
@@ -90,8 +91,8 @@ echo "
         </form>
     </div>
 
-    <div class='tabla_contenedor'>
-        <table>
+    <div class='contenedor2'>
+        <table class='rwd-table' style = 'margin-left: 45px;'>
             <tr>
                 <th>Portada</th>
                 <th>Nombre</th>

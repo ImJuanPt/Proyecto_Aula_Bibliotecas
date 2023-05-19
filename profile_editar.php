@@ -66,7 +66,7 @@ echo "
                 </a>
             </form>
             </div>
-            <div class='logout'><button><img src='Assets/Images/Botones/salir.png' ></button></div>
+            <div class='logout'><a href = 'procesos_usuario/inicio_sesion_usuario.html'><button><img src='Assets/Images/Botones/salir.png' ></button><a></div>
         </div>
     </div>
     <div class='home'>
@@ -103,7 +103,7 @@ echo "
                 <p class='cedula' id='user_info_edit'><input  name = 'cedula' type = 'number' value ='". $row["cedula"]."'</p><br>
                 <p class='correo' id='user_info_edit'><input  name = 'email' type = 'email' value ='". $row["correo"]."'</p><br>
                 <p id='contraseña' ><input  name = 'contra' type = 'text' value ='". $row["passw"]."'></p><br>
-                <button type = 'submit' class=editar;> <img class='editar' src='Assets/Images/Botones/lapiz-de-usuario.png'></button>
+                <button type = 'submit' class=editar;> <img class='editar2' src='Assets/Images/Botones/lapiz-de-usuario.png'></button>
             </form>
         </div>
     </div>

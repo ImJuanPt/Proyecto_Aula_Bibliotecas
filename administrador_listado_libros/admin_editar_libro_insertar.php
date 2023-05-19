@@ -2,6 +2,8 @@
 require_once('../conexion_querys/conexion.php');
 $proc = new proceso();
 $conn = $proc->conn();
+mysqli_set_charset($conn,'utf8mb4');
+$cc_usuario_sesion = mysqli_real_escape_string($conn, $_POST['cc_usuario_sesion']);
 $id_libro = mysqli_real_escape_string($conn, $_POST['id_libro']);
 $nombre = trim(mysqli_real_escape_string($conn, $_POST['nombre']));
 $descripcion = trim(mysqli_real_escape_string($conn, $_POST['desc']));
@@ -52,7 +54,12 @@ if (isset($_FILES['imagen']) && $_FILES['imagen']['error'] === UPLOAD_ERR_OK) {
     } else {
         die("Error al subir la imagen. Asegúrate de que seleccionaste un archivo válido. " . mysqli_error($conn));
     }
-}
+}else{
+    $sql = "UPDATE libros SET nombre = '$nombre', descripcion = '$descripcion', fecha_publicacion = '$fecha_publicacion',
+                id_autor = $id_autor, stock = $stock WHERE id_libro = $id_libro;";
+                
+}   $result = $proc->ejecutar_qury($conn, $sql);
+
 
 foreach ($generos as $id_genero) {
     $sql = "INSERT INTO libros_generos (id_libro, id_genero)
@@ -81,7 +88,7 @@ if (!empty($generos_a_eliminar)) {
     $result = $proc->ejecutar_qury($conn, $sql);
 }
   mysqli_close($conn);
-  header('Location: ../notificacion_resultado_error.php?mensaje=exito_edicion');
-  exit();
+  echo '<script>alert("El libro se elimino de forma exitosa");</script>';
+  $proc->volver_listado($cc_usuario_sesion);
 
 ?>

@@ -6,12 +6,18 @@
 .contenedor{
     position: absolute;
     left: 260px;
-    top: 0;
-    overflow-y: auto;
-    max-height: 100%;
+    top: -33px;
     z-index: 1; 
 }
 
+.contenedor2{
+    position: absolute;
+    left: 260px;
+    top: 31px;
+    overflow-y: auto;
+    max-height: 95%;
+    z-index: 1; 
+}
 .libro_content{
     width: 900px;
     height: 300px;
@@ -19,6 +25,55 @@
     padding: 10px;
     border-bottom: 2px solid gray ;
     
+}
+
+.libro_content_insert{
+    width: 900px;
+    height: 634px;
+    align-items: left;
+    padding: 10px;
+    border-bottom: 2px solid gray ;
+    
+}
+.libro_content_prestamo{
+
+    margin-top: 131px;
+    margin-bottom: 15px;
+    width: 900px;
+    height: 84px;
+    align-items: left;
+    padding: 10px;
+    border-bottom: 2px solid gray ;
+    
+}
+
+.libro_content_prestamo_2{
+
+    margin-top: 131px;
+    margin-bottom: 15px;
+    width: 900px;
+    height: 190px;
+    align-items: left;
+    padding: 10px;
+    border-bottom: 2px solid gray ;
+    
+}
+
+.libro_content_prestamo h3{
+    margin-bottom: 15px;
+}
+.libro_content_prestamo h4{
+    display: inline-block;
+}
+
+.imagen_register{
+    margin-right: 100%;
+    margin-bottom: 10px;
+}
+#btn_registrar{
+    width: 137px;
+    margin-top: 19px;
+    margin-left: 1px;
 }
 
 .libro_content .portada{
