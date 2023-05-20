@@ -67,17 +67,18 @@
 
 .register_camp{
     font-size: 23px;
-    font-family:'fuentesita' ;
+    font-family: 'fuentesita';
     display: flex;
     height: 600px;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin-left: 18px;
 }
 
 .register_camp p{
-    font-size: 40px;
-    font-family:'fuentesita';
+    font-size: 30px;
+    font-family: initial;
     margin-top: -15px;
 }
 

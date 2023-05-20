@@ -4,7 +4,7 @@ require_once('../../../conexion_querys/conexion.php');
 $proc = new proceso();
 $conn = $proc->conn();
 mysqli_set_charset($conn,"utf8mb4");
-
+date_default_timezone_set('America/Bogota');
 
 $id_libro = mysqli_real_escape_string($conn, $_POST['id_libro']);
 $cc_usuario_sesion = mysqli_real_escape_string($conn, $_POST['cc_usuario_sesion']);
