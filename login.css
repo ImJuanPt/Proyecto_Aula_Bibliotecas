@@ -103,6 +103,21 @@ header img {
     width: 20px;
     left: 220px;
 }
+.content .logout2 button {
+    position: relative;
+    top: 60px;
+    left: 0px;
+    background-color: tomato;
+    border: none;
+    cursor: pointer;
+}
+
+
+.content .logout2 button img {
+    position: absolute;
+    width: 20px;
+    left: 220px;
+}
 
 .welcome {
     position: absolute;
@@ -117,11 +132,12 @@ header img {
     position: absolute;
     width: 200px;
     font-size: 20px;
-    top: -40px;
+    top: 6px;
+    left: -749px;
 }
 
 .welcome .aventura {
-    font-size: 40px;
+    font-size: 30px;
     width: 600px;
     position: absolute;
     font-family: 50px;
@@ -205,6 +221,9 @@ header img {
 
 .logout{
     margin-top: 40%;
+}
+.logout2{
+    margin-top: 60%;
 }
 .home{
     cursor: pointer;

@@ -45,6 +45,24 @@ class proceso {
     </body>
     </html>";
   }
+
+  public function volver_listado_prestamo($cedula, $id_libro){
+    echo "
+    <html>
+    <head>
+        <script src='../../../script.js'></script>
+    </head>
+
+    <body onload='submitForm(\"form-libro-volver-$cedula\")'>
+      <form id='form-libro-volver-$cedula' action='admin_lista_prestamos.php' method='POST'>
+        <input type='hidden' name='cc_usuario_sesion' value='$cedula'>
+        <input type='hidden' name='id_libro' value='$id_libro'>
+      </form>
+    </body>
+    </html>";
+  }
+
+  
   public function volver_insertar($cedula){
     echo "
     <html>

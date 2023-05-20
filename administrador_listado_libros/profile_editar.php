@@ -57,17 +57,10 @@ echo "
                     </a>
                 </form>
             </div>
-            <div class='logout'><button><img src='../Assets/Images/Botones/salir.png' ></button></div>
+            <div class='logout2'><a href = '../procesos_usuario/inicio_sesion_usuario.html'><button><img src='../Assets/Images/Botones/salir.png' ></button></a></div>
         </div>
     </div>
-    <div class='home'>
-        <form id = 'enviar_datos_usuario".$row['cedula']."' action='index.php' method='post'>
-            <input type='hidden' name='cc_usuario_sesion' value='".$row['cedula']."'>
-            <a style='cursor: pointer' onclick='submitForm(\"enviar_datos_usuario".$row['cedula']."\")'>
-                <img src='../Assets/Images/Botones/separador.png' style = 'margin: auto;margin-left: 55%;'>
-            </a>
-        </form>
-    </div>
+    
     
     <div class='content_profile'>
         <div class='backgroundimage'> <img class='imagenperfil' src='../Assets/Images/Botones/usuario.png'></div>

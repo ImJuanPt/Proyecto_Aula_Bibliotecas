@@ -67,7 +67,7 @@ echo "
                 </form>
             </div>
             
-            <div class='logout'><a href = '../procesos_usuario/inicio_sesion_usuario.html'><button><img src='../Assets/Images/Botones/salir.png' ></button><a></div>
+            <div class='logout2'><a href = '../procesos_usuario/inicio_sesion_usuario.html'><button><img src='../Assets/Images/Botones/salir.png' ></button><a></div>
         </div>
     </div>
             <div class='contenedor'>";

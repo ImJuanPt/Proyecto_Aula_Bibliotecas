@@ -10,12 +10,9 @@ $row = mysqli_fetch_array($result, MYSQLI_BOTH);
 
 $sql_anuncio = "SELECT anuncios.*, libros.nombre, libros.img_portada FROM anuncios 
                 INNER JOIN libros ON anuncios.id_libro = libros.id_libro 
-                ORDER BY anuncios.id_anuncio DESC 
-                LIMIT 4;";
+                ORDER BY anuncios.id_libro DESC 
+                LIMIT 3;";
 $resultado_anuncio = $proc->ejecutar_qury($conn, $sql_anuncio);
-$fila_anuncio = mysqli_fetch_array($resultado_anuncio, MYSQLI_BOTH);
-
-
 
 // Almacenar los resultados en un arreglo
 $datos = array();
@@ -93,7 +90,7 @@ echo "
     </div>
     <div class='welcome'>
         <div>
-            <p class='bienvenido'>Bienvenido name</p>
+            <p class='bienvenido'>Bienvenido ".$row['nombre']."!</p>
             <p class='aventura'>¿Que aventura tendrás el día de hoy?</p>
         </div>
     </div>

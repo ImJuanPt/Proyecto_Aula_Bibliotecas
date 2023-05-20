@@ -18,6 +18,14 @@
     max-height: 95%;
     z-index: 1; 
 }
+.contenedor3{
+    position: absolute;
+    left: 260px;
+    top: 23px;
+    overflow-y: auto;
+    max-height: 95%;
+    z-index: 1; 
+}
 .libro_content{
     width: 900px;
     height: 300px;

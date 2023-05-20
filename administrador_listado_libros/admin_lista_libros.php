@@ -64,7 +64,7 @@
                 </form>
             </div>
             
-            <div class='logout'><a href = '../procesos_usuario/inicio_sesion_usuario.html'><button><img src='../Assets/Images/Botones/salir.png' ></button></a></div>
+            <div class='logout2'><a href = '../procesos_usuario/inicio_sesion_usuario.html'><button><img src='../Assets/Images/Botones/salir.png' ></button></a></div>
         </div>
     </div>
     <div class='welcome'>
@@ -84,7 +84,7 @@
             <div class='contenedor2'>";
             while($row_libro = mysqli_fetch_array($result,MYSQLI_BOTH)){
              echo "<div class='libro_content' id = 'datos'>
-                        <form id='form-libro-".$row_libro['id_libro']."' action='../descripcion_libro_seleccionado.php' method='POST'>
+                        <form id='form-libro-".$row_libro['id_libro']."' action='admin_descripcion_libro_seleccionado.php' method='POST'>
                             <input type='hidden' name='id_libro' value='".$row_libro['id_libro']."'>
                             <input type='hidden' name='cc_usuario_sesion' value='".$row['cedula']."'>
                                 <p class='titulo' style='cursor: pointer' onclick='submitForm(\"form-libro-".$row_libro['id_libro']."\")'>".$row_libro['nombre']."</p>

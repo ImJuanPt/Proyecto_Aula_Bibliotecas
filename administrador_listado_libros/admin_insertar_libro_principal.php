@@ -60,7 +60,7 @@ echo "
                 </form>
             </div>
             
-            <div class='logout'><a href = '../procesos_usuario/inicio_sesion_usuario.html'><button><img src='../Assets/Images/Botones/salir.png' ></button><a></div>
+            <div class='logout2'><a href = '../procesos_usuario/inicio_sesion_usuario.html'><button><img src='../Assets/Images/Botones/salir.png' ></button><a></div>
         </div>
     </div>
             <div class='contenedor'>";
@@ -74,7 +74,7 @@ echo "
              <input class='labe' type='text' name='autor' required>
              <label class='labe' for='stock'>Stock</label>
              <input class='labe' type='number' name='stock' required><br>
-             <label class='checkbx'>Seleccione uno o varios geneross:</label>
+             <label class='checkbx'>Seleccione uno o varios generos:</label>
              <div class='contenedor_checkbox'>";
                  $sql = 'SELECT * FROM generos';
                  $result = $proc->ejecutar_qury($conn, $sql);

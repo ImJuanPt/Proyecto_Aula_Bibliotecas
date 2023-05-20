@@ -103,14 +103,19 @@
                     <td>".$row['nombre_autor']."</td>
                     <td>".$row['fecha_prestamo']."</td>
                     <td>".$row['fecha_max_devolucion']."</td>
-                    <td>".$row['estado_prestamo']."</td>
-                    <form id='form-libro-entrega".$row['id_libro']."' action='admin_entrega_prestamo.php' method='POST' style='display: inline-block; margin-right: 15px; margin-left: 15px;'>
+                    <td>".$row['estado_prestamo']."</td>";
+                    if($row['estado_prestamo']==="NO ENTREGADO"){
+                    echo "
+                    <form id='form-libro-entrega".$row['id_prestamo']."' action='admin_entrega_prestamo.php' method='POST' style='display: inline-block; margin-right: 15px; margin-left: 15px;'>
                     <td>
                         <input type='hidden' name='id_libro' value='".$row['id_libro']."'>
-                        <center><img src='../../../iconos/dar_libro.png' title='Entrega de libro' style='width: 30px; cursor: pointer' onclick='submitForm(\"form-libro-entrega".$row['id_libro']."\")'><center>
+                        <input type='hidden' name='id_prestamo' value='".$row['id_prestamo']."'>
+                        <input type='hidden' name='cc_usuario_sesion' value='$cc_usuario_sesion'>
+                        <center><img src='../../../iconos/dar_libro.png' title='Entrega de libro' style='width: 30px; cursor: pointer' onclick='submitForm(\"form-libro-entrega".$row['id_prestamo']."\")'><center>
                     </td>    
                     </form>
                 </tr>";
+                }
             }
         }else{
             echo "<tr><td>El libro seleccionado no tiene ningun prestamo </td></tr>";
