@@ -60,11 +60,13 @@ body {
     margin-top: 112px;
     width: 30px;
     margin-left: 75px;
+    cursor: pointer;
 }
 .content_profile button .editar2 {
     margin-top: -79px;
     width: 30px;
     margin-left: -388px;
+    cursor: pointer;
 }
 
 
@@ -93,6 +95,7 @@ body {
     width: 30px;
     right: 200px;
     margin-top: 54px;
+    cursor: pointer;
 }
 
 #contraseña {
